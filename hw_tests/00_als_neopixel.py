@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify ALS responds to NeoPixel light changes
 
@@ -9,8 +12,10 @@ Test: ALS reading should increase when NeoPixels turn ON
 """
 
 import time
+
 import board
 import neopixel
+
 from adafruit_vcnl4030 import VCNL4030, ALSIntegrationTime
 
 NEOPIXEL_PIN = board.D7

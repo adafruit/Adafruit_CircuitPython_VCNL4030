@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify ALS integration time affects raw counts
 
@@ -9,8 +12,10 @@ Test: Longer integration times should give higher raw counts
 """
 
 import time
+
 import board
 import neopixel
+
 from adafruit_vcnl4030 import VCNL4030, ALSIntegrationTime
 
 NEOPIXEL_PIN = board.D7
@@ -50,7 +55,7 @@ time.sleep(0.1)
 
 # Test each integration time
 it_configs = [
-    ("50ms",  ALSIntegrationTime.MS_50,  0.10),
+    ("50ms", ALSIntegrationTime.MS_50, 0.10),
     ("100ms", ALSIntegrationTime.MS_100, 0.15),
     ("200ms", ALSIntegrationTime.MS_200, 0.30),
     ("400ms", ALSIntegrationTime.MS_400, 0.50),

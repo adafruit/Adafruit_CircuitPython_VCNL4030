@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify active force mode for triggered readings
 
@@ -9,7 +12,9 @@ Test: In AF mode, readings should only update after trigger
 """
 
 import time
+
 import board
+
 from adafruit_vcnl4030 import VCNL4030, ProxLEDCurrent
 
 print("=== 10_active_force ===")

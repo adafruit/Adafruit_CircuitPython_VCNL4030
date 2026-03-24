@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify LED current affects proximity readings
 
@@ -9,7 +12,9 @@ Test: Higher LED current should give higher proximity counts
 """
 
 import time
+
 import board
+
 from adafruit_vcnl4030 import VCNL4030, ProxLEDCurrent
 
 
@@ -45,7 +50,7 @@ time.sleep(0.1)
 
 # Test different LED currents
 current_configs = [
-    ("50mA",  ProxLEDCurrent.MA_50),
+    ("50mA", ProxLEDCurrent.MA_50),
     ("100mA", ProxLEDCurrent.MA_100),
     ("200mA", ProxLEDCurrent.MA_200),
 ]

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify proximity responds to stepper-positioned reflector
 
@@ -10,8 +13,10 @@ Hardware setup:
 """
 
 import time
+
 import board
 from digitalio import DigitalInOut, Direction
+
 from adafruit_vcnl4030 import VCNL4030, ProxLEDCurrent
 
 # Stepper config from sensor_neopixel_servo_test.py

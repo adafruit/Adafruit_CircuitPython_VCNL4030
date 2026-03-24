@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify 12-bit vs 16-bit PS resolution
 
@@ -9,7 +12,9 @@ Test: 16-bit mode should allow values > 4095
 """
 
 import time
+
 import board
+
 from adafruit_vcnl4030 import VCNL4030, ProxGain, ProxLEDCurrent
 
 

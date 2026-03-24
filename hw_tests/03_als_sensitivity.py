@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify ALS_HD and ALS_NS mode changes
 
@@ -9,8 +12,10 @@ Test: Raw counts should differ between modes but lux should compensate
 """
 
 import time
+
 import board
 import neopixel
+
 from adafruit_vcnl4030 import VCNL4030, ALSIntegrationTime
 
 NEOPIXEL_PIN = board.D7
@@ -92,9 +97,7 @@ raws_differ = (raw2 != raw1) or (raw3 != raw1)
 
 # Check if lux values are within 30% of each other (compensation working)
 avg_lux = (lux1 + lux2 + lux3) / 3.0
-lux_compensated = all(
-    avg_lux * 0.7 < lx < avg_lux * 1.3 for lx in (lux1, lux2, lux3)
-)
+lux_compensated = all(avg_lux * 0.7 < lx < avg_lux * 1.3 for lx in (lux1, lux2, lux3))
 
 if raws_differ:
     print("PASS: Raw counts differ between modes")

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify PS gain modes affect sensitivity
 
@@ -11,7 +14,9 @@ The "8X" means 8x extended range, NOT 8x more gain.
 """
 
 import time
+
 import board
+
 from adafruit_vcnl4030 import VCNL4030, ProxGain, ProxLEDCurrent
 
 

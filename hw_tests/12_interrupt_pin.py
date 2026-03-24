@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify INT pin goes LOW on proximity threshold crossing
 
@@ -13,14 +16,16 @@ Strategy:
 """
 
 import time
+
 import board
 from digitalio import DigitalInOut, Direction, Pull
+
 from adafruit_vcnl4030 import (
     VCNL4030,
+    VCNL4030_PROX_IF_CLOSE,
+    ProxInterruptMode,
     ProxLEDCurrent,
     ProxPersistence,
-    ProxInterruptMode,
-    VCNL4030_PROX_IF_CLOSE,
 )
 
 INT_PIN = board.D8

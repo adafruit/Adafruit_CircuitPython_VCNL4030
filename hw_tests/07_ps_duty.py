@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify PS duty cycle settings work
 
@@ -9,7 +12,9 @@ Test: All duty cycles should return valid (non-zero) readings
 """
 
 import time
+
 import board
+
 from adafruit_vcnl4030 import VCNL4030, ProxDuty, ProxLEDCurrent
 
 
@@ -43,8 +48,8 @@ time.sleep(0.1)
 
 # Test each duty cycle
 duty_configs = [
-    ("1/40",  ProxDuty.RATIO_40),
-    ("1/80",  ProxDuty.RATIO_80),
+    ("1/40", ProxDuty.RATIO_40),
+    ("1/80", ProxDuty.RATIO_80),
     ("1/160", ProxDuty.RATIO_160),
     ("1/320", ProxDuty.RATIO_320),
 ]

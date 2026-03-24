@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Tim Cocks for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
 """
 HW test: Verify interrupt flags fire on threshold crossings
 
@@ -10,22 +13,25 @@ Key insight: flags fire on TRANSITIONS. The sensor must cross from
 below-low to above-high (CLOSE) or above-high to below-low (AWAY).
 Start from a known state below threshold, then cross above.
 """
+# ruff: noqa: PLW0603
 
 import time
+
 import board
 import neopixel
 from digitalio import DigitalInOut, Direction
+
 from adafruit_vcnl4030 import (
     VCNL4030,
-    ProxLEDCurrent,
-    ProxPersistence,
-    ALSPersistence,
-    ALSIntegrationTime,
-    ProxInterruptMode,
-    VCNL4030_PROX_IF_AWAY,
-    VCNL4030_PROX_IF_CLOSE,
     VCNL4030_ALS_IF_H,
     VCNL4030_ALS_IF_L,
+    VCNL4030_PROX_IF_AWAY,
+    VCNL4030_PROX_IF_CLOSE,
+    ALSIntegrationTime,
+    ALSPersistence,
+    ProxInterruptMode,
+    ProxLEDCurrent,
+    ProxPersistence,
 )
 
 NEOPIXEL_PIN = board.D7
