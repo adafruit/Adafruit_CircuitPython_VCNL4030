@@ -33,6 +33,7 @@ print("Testing PS gain modes")
 print()
 
 sensor = VCNL4030(board.I2C())
+sensor.reset()
 print("VCNL4030 initialized")
 
 sensor.proximity_enabled = True

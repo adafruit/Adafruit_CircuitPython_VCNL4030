@@ -22,6 +22,7 @@ print("Testing PS active force mode")
 print()
 
 sensor = VCNL4030(board.I2C())
+sensor.reset()
 print("VCNL4030 initialized")
 
 sensor.proximity_enabled = True

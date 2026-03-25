@@ -54,6 +54,7 @@ set_all_pixels(pixels, 0, 0, 0)
 
 # Initialize sensor
 sensor = VCNL4030(board.I2C())
+sensor.reset()
 print("VCNL4030 initialized")
 
 # Enable ALS and white channel, set integration time

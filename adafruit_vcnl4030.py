@@ -764,3 +764,37 @@ class VCNL4030:
         """True if the PS sunlight protection flag was set in the last
         :attr:`interrupt_flags` read."""
         return bool(self._cached_int_flags & VCNL4030_PROX_SPFLAG)
+
+    def reset(self):
+        """Reset the sensor back to its initial configuration state."""
+        self.als_integration_time = ALSIntegrationTime.MS_100
+        self.als_persistence = ALSPersistence.CYCLES_1
+        self.proximity_integration_time = ProxIntegrationTime.T_1
+        self.proximity_persistence = ProxPersistence.CYCLES_1
+        self.proximity_duty = ProxDuty.RATIO_40
+        self.proximity_interrupt_mode = ProxInterruptMode.DISABLED
+        self.proximity_gain = ProxGain.TWO_STEP
+        self.led_current = ProxLEDCurrent.MA_50
+        self.sunlight_cancel_current = SunlightCancelCurrent.X1
+
+        self.als_enabled = True
+        self.white_channel_enabled = True
+        self.proximity_enabled = True
+        self.als_interrupt_enabled = False
+        self.als_high_dynamic_range = False
+        self.als_low_sensitivity = False
+        self.proximity_low_sensitivity = False
+        self.proximity_resolution_16bit = True
+        self.sunlight_cancellation_enabled = False
+        self.proximity_logic_mode = False
+        self.proximity_active_force_mode = False
+        self.proximity_smart_persistence = False
+        self.led_low_current = False
+        self.sunlight_protect_output_high = False
+        self.sunlight_protection_enhanced = False
+
+        self.als_threshold_high = 0
+        self.als_threshold_low = 0
+        self.proximity_threshold_high = 0
+        self.proximity_threshold_low = 0
+        self.proximity_cancellation = 0

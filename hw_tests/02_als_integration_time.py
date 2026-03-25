@@ -48,6 +48,7 @@ pixels = neopixel.NeoPixel(NEOPIXEL_PIN, NEOPIXEL_COUNT, brightness=1.0, auto_wr
 pixels.fill((64, 64, 64))
 
 sensor = VCNL4030(board.I2C())
+sensor.reset()
 print("VCNL4030 initialized")
 
 sensor.als_enabled = True

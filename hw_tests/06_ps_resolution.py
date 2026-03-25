@@ -40,6 +40,7 @@ print("Testing 12-bit vs 16-bit proximity resolution")
 print()
 
 sensor = VCNL4030(board.I2C())
+sensor.reset()
 print("VCNL4030 initialized")
 print("Reflector in close position for high readings")
 print()

@@ -46,13 +46,15 @@ print()
 # Initialize NeoPixels at moderate brightness
 pixels = neopixel.NeoPixel(NEOPIXEL_PIN, NEOPIXEL_COUNT, brightness=1.0, auto_write=True)
 pixels.fill((100, 100, 100))
+time.sleep(0.5)
 
 sensor = VCNL4030(board.I2C())
+sensor.reset()
 print("VCNL4030 initialized")
 
 sensor.als_enabled = True
 sensor.als_integration_time = ALSIntegrationTime.MS_100
-time.sleep(0.2)
+time.sleep(0.4)
 
 # Mode 1: HD=0, NS=0 (most sensitive, default)
 print("--- Mode 1: HD=0, NS=0 (most sensitive) ---")

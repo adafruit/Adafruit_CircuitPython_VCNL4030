@@ -57,18 +57,22 @@ int_pin.direction = Direction.INPUT
 int_pin.pull = Pull.UP
 
 sensor = VCNL4030(board.I2C())
+sensor.reset()
 print("VCNL4030 initialized")
 _ = sensor.interrupt_flags
 # Verify INT pin starts HIGH (open drain, pulled up)
 if int_pin.value != True:
     print("FAIL: INT pin not HIGH at start (check wiring)")
+    print("~~END~~")
     raise SystemExit
-print("INT pin HIGH at start: OK")
+print("PASS: INT pin HIGH at start: OK")
 
 sensor.proximity_enabled = True
 sensor.led_current = ProxLEDCurrent.MA_200
 sensor.proximity_resolution_16bit = True
 time.sleep(0.2)
+
+print(f"proximity with reflector cover: {sensor.proximity}")
 
 # Move reflector to FAR position for ambient sampling
 step_motor(HALF_ROT, direction=True)
@@ -118,13 +122,14 @@ while time.monotonic() - start < 5.0:
 
 if not int_fired:
     print("FAIL: INT never fired")
+    print("~~END~~")
     raise SystemExit
 
-print("\nINT fired!")
+print("\nPASS: INT fired!")
 
 # Verify pin is LOW
 if not int_pin.value:
-    print("INT pin LOW after trigger: OK")
+    print("PASS: INT pin LOW after trigger: OK")
 else:
     print("FAIL: INT pin not LOW after trigger")
 
@@ -133,16 +138,16 @@ flags = sensor.interrupt_flags
 print(f"Flags: 0x{flags:02X}")
 
 if flags & VCNL4030_PROX_IF_CLOSE:
-    print("CLOSE flag set: OK")
+    print("PASS: CLOSE flag set: OK")
 else:
     print("FAIL: CLOSE flag not set")
 
 # After reading flags, INT should release (go HIGH)
 time.sleep(0.01)
 if int_pin.value:
-    print("INT pin released (HIGH) after flag read: OK")
+    print("PASS: INT pin released (HIGH) after flag read: OK")
 else:
-    print("WARNING: INT pin still LOW after flag read")
+    print("FAIL: INT pin still LOW after flag read")
 
 # Disable interrupt
 sensor.proximity_interrupt_mode = ProxInterruptMode.DISABLED  # re-use DISABLED

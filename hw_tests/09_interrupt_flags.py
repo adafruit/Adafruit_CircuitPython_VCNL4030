@@ -79,6 +79,7 @@ pixels = neopixel.NeoPixel(NEOPIXEL_PIN, NEOPIXEL_COUNT, brightness=0.2, auto_wr
 pixels.fill((0, 0, 0))
 
 sensor = VCNL4030(board.I2C())
+sensor.reset()
 print("VCNL4030 initialized")
 
 sensor.proximity_enabled = True
@@ -97,11 +98,11 @@ time.sleep(1.0)
 ps_close = sensor.proximity
 print(f"  PS close: {ps_close}")
 
-sensor.proximity_threshold_low = 8
+sensor.proximity_threshold_low = ps_close // 4
 sensor.proximity_threshold_high = ps_close // 2
 sensor.proximity_interrupt_mode = ProxInterruptMode.BOTH
 
-print(f"  Low thresh: 8  High thresh: {ps_close // 2}")
+print(f"  Low thresh: {ps_close // 4}  High thresh: {ps_close // 2}")
 
 sensor.interrupt_flags  # clear
 time.sleep(0.2)
