@@ -500,9 +500,9 @@ class VCNL4030:
         self.als_enabled = True
         self.white_channel_enabled = True
 
-        # PS: 16-bit mode, 50 mA LED current, enable PS
+        # PS: 16-bit mode, 200 mA LED current, enable PS
         self.proximity_resolution_16bit = True
-        self.led_current = ProxLEDCurrent.MA_50
+        self.led_current = ProxLEDCurrent.MA_200
         self.proximity_enabled = True
 
     # ----------------------------------------------------------------
