@@ -9,6 +9,7 @@ Hardware setup:
 - Stepper motor on DIR=D10, STEP=D9 with reflector in close position
 
 Test: 16-bit mode should allow values > 4095
+For most accurate test place an object directly on the sensor as close as possible.
 """
 
 import time
@@ -47,7 +48,7 @@ print()
 
 sensor.proximity_enabled = True
 sensor.led_current = ProxLEDCurrent.MA_200  # High current for strong signal
-sensor.proximity_gain = ProxGain.SINGLE_8X
+sensor.proximity_gain = ProxGain.TWO_STEP
 time.sleep(0.1)
 
 # Test 12-bit mode (PS_HD=0)

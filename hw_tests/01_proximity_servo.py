@@ -75,8 +75,8 @@ time.sleep(1.0)
 ps_close = median_read(sensor, "proximity")
 print(f"  Proximity: {ps_close}")
 
-# FAR: quarter rotation moves reflector away from sensor
-print("--- FAR (quarter rotation) ---")
+# FAR: half rotation moves reflector away from sensor
+print("--- FAR (half rotation) ---")
 step_motor(HALF_ROT, direction=True)
 time.sleep(1.0)
 ps_far = median_read(sensor, "proximity")
