@@ -100,7 +100,8 @@ for name, level in sc_levels:
     sensor.sunlight_cancel_current = level
     time.sleep(0.05)
     read_back = sensor.sunlight_cancel_current
-    print(f"  Set {name}, read {sc_names.get(read_back, '?')}")
+    ps_sc = median_read(sensor, "proximity")
+    print(f"  Set {name}, read {sc_names.get(read_back, '?')}, proximity={ps_sc}")
     if read_back != level:
         all_passed = False
 print()
@@ -109,13 +110,15 @@ print()
 print("--- Sunlight protection ---")
 sensor.sunlight_protection_enhanced = False
 sp_off = sensor.sunlight_protection_enhanced
-print(f"  SP=0 (1x): {'FAIL' if sp_off else 'OK'}")
+ps_sp_off = median_read(sensor, "proximity")
+print(f"  SP=0 (1x): {'FAIL' if sp_off else 'OK'}, proximity={ps_sp_off}")
 if sp_off:
     all_passed = False
 
 sensor.sunlight_protection_enhanced = True
 sp_on = sensor.sunlight_protection_enhanced
-print(f"  SP=1 (1.5x): {'OK' if sp_on else 'FAIL'}")
+ps_sp_on = median_read(sensor, "proximity")
+print(f"  SP=1 (1.5x): {'OK' if sp_on else 'FAIL'}, proximity={ps_sp_on}")
 if not sp_on:
     all_passed = False
 print()
